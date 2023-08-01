@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_200837) do
     t.boolean "voice_channel", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["platform_indentification"], name: "index_ads_on_platform_indentification", unique: true
   end
 
 end

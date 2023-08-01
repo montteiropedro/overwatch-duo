@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+require "fileutils"
+
+# path to your application root.
+APP_ROOT = File.expand_path("..", __dir__)
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+FileUtils.chdir APP_ROOT do
+  puts "\n== Preparing database container =="
+  system! "docker run --rm --name ow_db -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=admin -e POSTGRES_DB=ow_db -p 5432:5432 -v #{APP_ROOT}/volumes/db:/var/lib/postgresql/data postgres"
+end
+

@@ -25,6 +25,9 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 
+# Ignore docker volumes
+/volumes
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .env

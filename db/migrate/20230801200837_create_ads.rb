@@ -12,5 +12,7 @@ class CreateAds < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+
+    add_index :ads, :platform_indentification, unique: true
   end
 end
