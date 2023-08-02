@@ -10,6 +10,6 @@ end
 
 FileUtils.chdir APP_ROOT do
   puts "\n== Preparing database container =="
-  system! "docker run --rm --name ow_db -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=admin -e POSTGRES_DB=ow_db -p 5432:5432 -v #{APP_ROOT}/volumes/db:/var/lib/postgresql/data postgres"
+  system! "docker run --rm --name ow_db -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=admin -p 5432:5432 -v #{APP_ROOT}/volumes/db:/var/lib/postgresql/data postgres"
 end
 

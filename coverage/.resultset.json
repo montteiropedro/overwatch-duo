@@ -1,6 +1,84 @@
 {
   "RSpec": {
     "coverage": {
+      "/home/pedro/www/overwatch-duo/app/controllers/api/v1/ads_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/home/pedro/www/overwatch-duo/app/controllers/api/v1/api_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/pedro/www/overwatch-duo/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/home/pedro/www/overwatch-duo/app/models/ad.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/pedro/www/overwatch-duo/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
       "/home/pedro/www/overwatch-duo/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
@@ -13,66 +91,6 @@
       },
       "/home/pedro/www/overwatch-duo/app/channels/application_cable/connection.rb": {
         "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/pedro/www/overwatch-duo/app/controllers/api/v1/ads_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/pedro/www/overwatch-duo/app/controllers/api/v1/application_controller.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/pedro/www/overwatch-duo/app/controllers/application_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
           0,
           0,
           0,
@@ -103,32 +121,8 @@
         ],
         "branches": {
         }
-      },
-      "/home/pedro/www/overwatch-duo/app/models/ad.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/pedro/www/overwatch-duo/app/models/application_record.rb": {
-        "lines": [
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1690993936
+    "timestamp": 1691009247
   }
 }

@@ -23,12 +23,12 @@ default: &default
 
 development:
   <<: *default
-  url: <%= ENV["DB_URL"] %>
+  url: <%= ENV["DB_DEV_URL"] %>
 
 test:
   <<: *default
-  url: <%= ENV["DB_URL"] %>
+  url: <%= ENV["DB_TEST_URL"] %>
 
 production:
   <<: *default
-  url: <%= ENV["DB_URL"] %>
+  url: <%= ENV["DB_PROD_URL"] %>
