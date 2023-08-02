@@ -21,7 +21,7 @@ class ApplicationController < ActionController::API
     render status: :bad_request, json: { message: 'Erro nos parâmetros enviados', errors: }
   end
 
-  def invalid(error)
-    render status: :unprocessable_entity, json: { errors: error.record.errors }
+  def invalid(err)
+    render status: :unprocessable_entity, json: { errors: err.record.errors }
   end
 end

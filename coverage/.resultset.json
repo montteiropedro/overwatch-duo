@@ -1,23 +1,43 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/pedro/www/overwatch-duo/app/controllers/api/v1/ads_controller.rb": {
+      "/home/pedro/www/overwatch-duo/app/models/ad.rb": {
         "lines": [
           1,
           1,
           1,
           1,
           null,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/pedro/www/overwatch-duo/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/pedro/www/overwatch-duo/app/controllers/api/v1/ads_controller.rb": {
+        "lines": [
+          1,
+          1,
+          2,
+          2,
+          null,
           null,
           1,
           null,
           1,
-          1,
+          2,
           null,
           null,
           null,
           1,
-          0,
+          1,
           null,
           null
         ]
@@ -56,26 +76,6 @@
           1,
           1,
           null,
-          null
-        ]
-      },
-      "/home/pedro/www/overwatch-duo/app/models/ad.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/pedro/www/overwatch-duo/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
           null
         ]
       },
@@ -123,6 +123,6 @@
         }
       }
     },
-    "timestamp": 1691009247
+    "timestamp": 1691016222
   }
 }
