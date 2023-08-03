@@ -1,0 +1,7 @@
+pt-BR:
+  api:
+    v1:
+      ads:
+        is_not_a_valid: não é válido
+        bad_request: erro nos parâmetros enviados
+        internal_server_error: erro interno da aplicação
