@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+  include AbstractController::Translation
+
   rescue_from ActiveRecord::ActiveRecordError, with: :internal_server_error
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from ActiveRecord::RecordInvalid, with: :invalid
@@ -7,7 +9,7 @@ class ApplicationController < ActionController::API
   private
 
   def internal_server_error
-    render status: :internal_server_error
+    render status: :internal_server_error, json: { error: t('.internal_server_error') }
   end
 
   def not_found
@@ -15,10 +17,10 @@ class ApplicationController < ActionController::API
   end
 
   def bad_request(err)
-    message = err.message.gsub(/('.*')/, '').split
-    errors = {}
-    errors[message.pop] = message.join(' ')
-    render status: :bad_request, json: { message: 'Erro nos parâmetros enviados', errors: }
+    err_message = err.message.gsub(/('.*')/, '').split
+    messages = {}
+    messages[err_message.pop] = t(".#{err_message.join('_')}")
+    render status: :bad_request, json: { error: t('.bad_request'), messages: }
   end
 
   def invalid(err)
