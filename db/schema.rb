@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_01_200837) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_04_150206) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "ads", force: :cascade do |t|
+  create_table "ads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "game_mode", null: false
     t.integer "platform", null: false
     t.string "platform_indentification", null: false
