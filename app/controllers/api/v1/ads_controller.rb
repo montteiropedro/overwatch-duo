@@ -4,6 +4,9 @@ class Api::V1::AdsController < Api::V1::ApiController
     render json: format(@ad), status: :created if @ad.save!
   end
 
+  def index
+  end
+
   private
 
   def ad_params
