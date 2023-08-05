@@ -18,10 +18,14 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+}
+
+@layer {
+  html {
+    @apply h-full cursor-overwatch;
+  }
+
+  body {
+    @apply bg-[#121214] bg-background bg-cover bg-no-repeat py-20;
+  }
 }
