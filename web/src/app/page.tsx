@@ -16,7 +16,7 @@ export default function Home() {
         priority
       />
 
-      <h1 className='mb-16 text-center text-6xl font-black'>Seu <span className='animate-pulse bg-clip-text bg-default-gradient text-transparent '>duo</span> está aqui</h1>
+      <h1 className='mb-16 text-center text-6xl font-black'>Seu <span className='animate-pulse bg-clip-text bg-duo-gradient text-transparent '>duo</span> está aqui</h1>
 
       <div className='mx-auto flex gap-6 items-center justify-center'>
         {gameModes.map((mode, index) => (

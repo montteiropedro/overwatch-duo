@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --tabmenu-body: #2A2634;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,4 +29,61 @@ body {
   body {
     @apply bg-[#121214] bg-background bg-cover bg-no-repeat py-20;
   }
+}
+
+@keyframes flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.tabmenu-gradient {
+  background:
+    linear-gradient(var(--tabmenu-body), var(--tabmenu-body)) padding-box,
+    linear-gradient(83deg, #9572FC 0%, #E8355F 50.52%, #E88C4E 100%) border-box;
+  background-size: 150%;
+  border-top: 4px solid transparent;
+  animation: flow 4s ease infinite alternate;
+}
+
+.tabmenu-gradient-unranked {
+  background:
+    linear-gradient(var(--tabmenu-body), var(--tabmenu-body)) padding-box,
+    linear-gradient(83deg, #9572FC 0%, #3567E8 50.52%, #4EDFE8 100%) border-box;
+  background-size: 150%;
+  border-top: 4px solid transparent;
+  animation: flow 4s ease infinite alternate;
+}
+
+.tabmenu-gradient-competitive {
+  background:
+    linear-gradient(var(--tabmenu-body), var(--tabmenu-body)) padding-box,
+    linear-gradient(83deg, #9572FC 0%, #F445C3 50.52%, #E7407F 100%) border-box;
+  background-size: 150%;
+  border-top: 4px solid transparent;
+  animation: flow 4s ease infinite alternate;
+}
+
+.tabmenu-gradient-arcade {
+  background:
+    linear-gradient(var(--tabmenu-body), var(--tabmenu-body)) padding-box,
+    linear-gradient(83deg, #9572FC 0%, #05B604 50.52%, #8EE38D 100%) border-box;
+  background-size: 150%;
+  border-top: 4px solid transparent;
+  animation: flow 4s ease infinite alternate;
+}
+
+.tabmenu-gradient-custom_game {
+  background:
+    linear-gradient(var(--tabmenu-body), var(--tabmenu-body)) padding-box,
+    linear-gradient(83deg, #9572FC 0%, #C13FE6 50.52%, #F3C3FF 100%) border-box;
+  background-size: 150%;
+  border-top: 4px solid transparent;
+  animation: flow 4s ease infinite alternate;
 }
