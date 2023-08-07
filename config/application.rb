@@ -38,7 +38,7 @@ module OverwatchDuo
 
     OmniAuth::AuthenticityTokenProtection.default_options(key: "csrf.token", authenticity_param: "_csrf")
 
-    config.session_store :cookie_store, key: '_discord_session', expire_after: 1.minute
+    config.session_store :cookie_store, key: '_discord_session', expire_after: 1.day
     config.middleware.use ActionDispatch::Cookies # Required for all session management
     config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
   end
