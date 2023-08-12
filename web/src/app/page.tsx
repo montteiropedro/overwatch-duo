@@ -13,7 +13,6 @@ export default function Home() {
         className="mx-auto mb-16 w-[282px] h-[162px]"
         width={282}
         height={162}
-        priority
       />
 
       <h1 className='mb-16 text-center text-6xl font-black'>Seu <span className='animate-pulse bg-clip-text bg-duo-gradient text-transparent '>duo</span> está aqui</h1>

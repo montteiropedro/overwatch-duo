@@ -17,10 +17,6 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-}
-
 @layer {
   html {
     @apply h-full cursor-overwatch;
@@ -29,6 +25,14 @@ body {
   body {
     @apply bg-[#121214] bg-background bg-cover bg-no-repeat py-20;
   }
+
+  * {
+    @apply cursor-overwatch;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
 }
 
 @keyframes flow {
@@ -41,6 +45,66 @@ body {
   100% {
     background-position: 0% 50%;
   }
+}
+
+label#voice_channel:after {
+  position: absolute;
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+input[type=checkbox]:checked ~ label#voice_channel:after {
+  display: block;
+}
+
+label#voice_channel:after {
+  top: 4px; left: 8px;
+  width: 8px;
+  height: 12px;
+  border: solid #34d399;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+select{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:%236b7280}</style><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>');
+    background-repeat: no-repeat, repeat;
+    background-position: right 1em top 50%, 0 0;
+    background-size: 1rem auto, 100%;
+}
+
+input[type=time]::-webkit-datetime-edit-ampm-field {
+  font-weight: 900 !important;
+  font-style: normal;
+  margin-right: 4px;
+  display: block;
+  text-align: end;
+}
+
+input[type=time]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 16px;
+  filter: invert(80%) sepia(19%) saturate(6428%) hue-rotate(325deg) brightness(97%) contrast(88%);
+  font-size: 16px;
+}
+
+input[type=time]::-webkit-datetime-edit {
+  display: inline-flex;
+  width: 10px;
+  flex-grow: 1;
+  padding: 0px;
+  margin-left: 10px;
+} 
+
+input[type=time]::-webkit-datetime-edit-fields-wrapper {
+  line-height: 18px;
+  padding-top: 2px;
 }
 
 .tabmenu-gradient {

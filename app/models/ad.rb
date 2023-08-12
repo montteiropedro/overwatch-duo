@@ -6,4 +6,21 @@ class Ad < ApplicationRecord
   validates :platform_indentification, uniqueness: true
   validates :game_mode, :platform, :platform_indentification, presence: true
   validates :years_playing, :hour_start, :hour_end, numericality: { only_integer: true }
+
+  def hour_start=(string_value)
+    self[:hour_start] = hours_to_minutes(string_value)
+  end
+
+  def hour_end=(string_value)
+    self[:hour_end] = hours_to_minutes(string_value)
+  end
+
+  private
+
+  def hours_to_minutes(value)
+    debugger
+
+    hour, minutes = value.split(':').map(&:to_i)
+    (hour * 60) + minutes
+  end
 end

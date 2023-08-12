@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'inter': ['var(--font-inter)']
+      },
       backgroundImage: {
         'background': 'url(/background.svg)',
         'duo-gradient': 'linear-gradient(83deg, #9572FC 0%, #E8355F 50.52%, #E88C4E 85%);',
@@ -16,8 +19,11 @@ module.exports = {
         'card-gradient-arcade': 'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 55%, #05B604 85%);',
         'card-gradient-custom_game': 'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 55%, #C13FE6 85%);',
       },
+      backgroundColor: {
+        'shape': '#2A2634'
+      },
       cursor: {
-        'overwatch': 'url(/cursor.svg), default',
+        'overwatch': 'url(/cursor.svg), auto',
         'pointer': 'url(/cursor.svg), pointer'
       },
       colors: {

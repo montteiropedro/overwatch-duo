@@ -34,11 +34,10 @@ export function GameModeCard({ gameMode, adsCount, modeLogo, modeImage }: IGameM
       <Image
         src={modeImage}
         alt={gameMode}
-        className="opacity-10 group-hover:opacity-100 -z-10 transition-all ease-in-out duration-300"
-        style={{ objectFit: "cover" }}
-        sizes='0%'
-        fill
-        priority
+        width={180}
+        height={240}
+        className="absolute object-cover inset-0 h-full w-full opacity-10 group-hover:opacity-100 group-hover:h-[105%] group-hover:w-[105%] -z-10 transition-all ease-in-out duration-300"
+        priority={true}
       />
 
       <Image
@@ -47,11 +46,10 @@ export function GameModeCard({ gameMode, adsCount, modeLogo, modeImage }: IGameM
         width={60}
         height={60}
         className='self-center mt-7 group-hover:hidden transition-all ease-in-out duration-500'
-        priority
       />
  
       <div className={`flex flex-col justify-end absolute bottom-0 left-0 h-full w-full p-4 bg-card-gradient ${gradientHovers[gameMode as keyof IColors]} rounded-lg`}>  
-        <h2 className="font-bold uppercase">{gameMode}</h2> 
+        <h2 className="font-bold uppercase">{gameMode.replace('_', ' ')}</h2> 
         <span className='text-sm font-medium text-zinc-300'>{adsCount} {adsCount === 1 ? 'Anúncio' : 'Anúncios' }</span>
       </div>
     </div>
