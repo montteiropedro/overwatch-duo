@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_05_001728) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_14_201002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "ads", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.integer "game_mode", null: false
     t.integer "platform", null: false
     t.string "platform_indentification", null: false
     t.integer "years_playing"
@@ -26,7 +25,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_001728) do
     t.boolean "voice_channel", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "game_mode_id", null: false
+    t.index ["game_mode_id"], name: "index_ads_on_game_mode_id"
     t.index ["platform_indentification"], name: "index_ads_on_platform_indentification", unique: true
+  end
+
+  create_table "game_modes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -41,4 +48,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_001728) do
     t.index ["steam_code"], name: "index_users_on_steam_code", unique: true
   end
 
+  add_foreign_key "ads", "game_modes"
 end

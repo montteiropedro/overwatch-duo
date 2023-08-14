@@ -1,22 +1,24 @@
-// 'use client'
+'use client'
 import Image from 'next/image'
 import { GameModeCard } from '../components/GameModeCard'
 import { TabMenu } from '../components/TabMenu'
 import { useEffect, useState } from 'react'
 import api from '../services/api'
 
-// interface IGameMode {
-//   name: string;
-//   adsCount: number;
-// }
+interface IGameMode {
+  name: string;
+  ads_count: number;
+}
 
 export default function Home() {
-  // const [gameModes, setGameModes] = useState()
-  const gameModes: string[] = ['unranked', 'competitive', 'arcade', 'custom_game']
+  const [gameModes, setGameModes] = useState<IGameMode[] | null>(null)
   
-  // useEffect(() => {
-  //   api.get('api/v1/game_modes').then({ data } => console.log(data))
-  // }, [])
+  useEffect(() => {
+    api.get('/api/v1/game_modes').then(({ data }) => {
+      setGameModes(data)
+      console.log('game modes:', gameModes)
+    }).catch(error => console.error(error))
+  }, [])  
 
   return (
     <main className=''>
@@ -31,13 +33,13 @@ export default function Home() {
       <h1 className='mb-16 text-center text-6xl font-black'>Seu <span className='animate-pulse bg-clip-text bg-duo-gradient text-transparent '>duo</span> está aqui</h1>
 
       <div className='mx-auto flex gap-6 items-center justify-center'>
-        {gameModes.map((mode, index) => (
+        {gameModes?.map((mode, index) => (
           <GameModeCard
             key={index}
-            gameMode={mode}
-            adsCount={0}
-            modeImage={`/game_mode/${mode}.png`}
-            modeLogo={`/mode_logos/${mode}.svg`}
+            gameMode={mode.name}
+            adsCount={mode.ads_count}
+            modeImage={`/game_mode/${mode.name}.png`}
+            modeLogo={`/mode_logos/${mode.name}.svg`}
           />
         ))} 
       </div>
