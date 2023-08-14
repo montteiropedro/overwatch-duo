@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   scope :auth do
     get '/discord', to: 'sessions#new'
     get '/discord/callback', to: 'sessions#create'
+    delete '/discord/logout', to: 'sessions#destroy'
     get '/profile', to: 'sessions#current_user'
   end
   

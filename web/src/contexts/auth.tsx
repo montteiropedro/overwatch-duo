@@ -3,6 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from "react"
 import api from '../services/api'
 
 interface IUser {
+  id: string;
   username: string;
   avatar: string;
 }
@@ -30,7 +31,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = async () => await api.get('/auth/discord').then(({ data }) => window.location.href = data);
-  const logout = () => console.log('Logout not implemented yet')
+  const logout = async () => await api.delete('/auth/discord/logout', { withCredentials: true }).then(res => location.reload())
 
   return (
     <AuthContext.Provider value={{ isAuthenticated: !!user, user, login, logout }}>

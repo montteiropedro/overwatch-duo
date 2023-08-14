@@ -12,10 +12,18 @@ class SessionsController < ApplicationController
     redirect_to ENV.fetch('WEB_URL')
   end
 
+  def destroy
+    return render status: :unauthorized if cookies.encrypted[:_discord_session].nil?
+
+    cookies.delete :_discord_session
+    head :no_content
+  end
+
   def current_user
     return render status: :unauthorized if cookies.encrypted[:_discord_session].nil?
 
     render status: :ok, json: {
+      id: session[:discord]['id'],
       avatar: session[:discord]['avatar'],
       username: session[:discord]['username']
     }
@@ -25,9 +33,10 @@ class SessionsController < ApplicationController
 
   def create_session(auth)
     session[:discord] = {
-      expires_at: auth['credentials']['expires_at'],
+      id: auth['uid'],
       avatar: auth['info']['image'],
-      username: auth['info']['name']
+      username: auth['info']['name'],
+      expires_at: auth['credentials']['expires_at']
     }
   end
 end

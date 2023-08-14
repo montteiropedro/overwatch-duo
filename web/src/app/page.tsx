@@ -1,10 +1,23 @@
+// 'use client'
 import Image from 'next/image'
 import { GameModeCard } from '../components/GameModeCard'
 import { TabMenu } from '../components/TabMenu'
+import { useEffect, useState } from 'react'
+import api from '../services/api'
+
+// interface IGameMode {
+//   name: string;
+//   adsCount: number;
+// }
 
 export default function Home() {
+  // const [gameModes, setGameModes] = useState()
   const gameModes: string[] = ['unranked', 'competitive', 'arcade', 'custom_game']
   
+  // useEffect(() => {
+  //   api.get('api/v1/game_modes').then({ data } => console.log(data))
+  // }, [])
+
   return (
     <main className=''>
       <Image
