@@ -2,17 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Ad, type: :model do
   describe '#valid?' do
-    context 'game_mode' do
-      it 'não deve estar em branco' do
-        ad = Ad.new(game_mode: '')
-
-        ad.valid?
-
-        expect(ad.errors.include?(:game_mode)).to eq true
-        expect(ad.errors[:game_mode].include?('não pode ficar em branco')).to eq true
-      end
-    end
-
     context 'platform' do
       it 'não deve estar em branco' do
         ad = Ad.new(platform: '')
@@ -32,19 +21,6 @@ RSpec.describe Ad, type: :model do
 
         expect(ad.errors.include?(:platform_indentification)).to eq true
         expect(ad.errors[:platform_indentification].include?('não pode ficar em branco')).to eq true
-      end
-
-      it 'deve ser único' do
-        Ad.create!(platform_indentification: 'PlayerNumberOne',
-                   game_mode: :unranked, platform: :battle_net,
-                   years_playing: 7, favorite_classes: :tank,
-                   hour_start: 360, hour_end: 480, voice_channel: true)
-        ad = Ad.new(platform_indentification: 'PlayerNumberOne')
-
-        ad.valid?
-
-        expect(ad.errors.include?(:platform_indentification)).to eq true
-        expect(ad.errors[:platform_indentification].include?('já está em uso')).to eq true
       end
     end
 
@@ -68,6 +44,16 @@ RSpec.describe Ad, type: :model do
         expect(ad.errors.include?(:hour_start)).to eq true
         expect(ad.errors[:hour_start].include?('não é um número')).to eq true
       end
+
+      it 'deve transformar de horas/minutos pra apenas minutos' do
+        ad1 = Ad.new(hour_start: '18:00')
+        ad2 = Ad.new(hour_start: '18:30')
+
+        expect(ad1.hour_start).not_to eq '18:00'
+        expect(ad1.hour_start).to eq 1080
+        expect(ad2.hour_start).not_to eq '18:30'
+        expect(ad2.hour_start).to eq 1110
+      end
     end
 
     context 'hour_end' do
@@ -78,6 +64,16 @@ RSpec.describe Ad, type: :model do
 
         expect(ad.errors.include?(:hour_end)).to eq true
         expect(ad.errors[:hour_end].include?('não é um número')).to eq true
+      end
+
+      it 'deve transformar de horas/minutos pra apenas minutos' do
+        ad1 = Ad.new(hour_end: '18:00')
+        ad2 = Ad.new(hour_end: '18:30')
+
+        expect(ad1.hour_end).not_to eq '18:00'
+        expect(ad1.hour_end).to eq 1080
+        expect(ad2.hour_end).not_to eq '18:30'
+        expect(ad2.hour_end).to eq 1110
       end
     end
   end

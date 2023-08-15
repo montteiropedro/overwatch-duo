@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_14_201002) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_15_184320) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -26,8 +26,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_201002) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "game_mode_id", null: false
+    t.uuid "user_id", null: false
     t.index ["game_mode_id"], name: "index_ads_on_game_mode_id"
-    t.index ["platform_indentification"], name: "index_ads_on_platform_indentification", unique: true
+    t.index ["user_id"], name: "index_ads_on_user_id"
   end
 
   create_table "game_modes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -39,14 +40,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_201002) do
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "provider"
     t.string "discord_id"
-    t.string "battle_net_user"
-    t.string "steam_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["battle_net_user"], name: "index_users_on_battle_net_user", unique: true
     t.index ["discord_id"], name: "index_users_on_discord_id", unique: true
-    t.index ["steam_code"], name: "index_users_on_steam_code", unique: true
   end
 
   add_foreign_key "ads", "game_modes"
+  add_foreign_key "ads", "users"
 end

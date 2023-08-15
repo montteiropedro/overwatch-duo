@@ -23,7 +23,7 @@ type TFormInputs = {
 export function CreateAdButton() {
   const { register, handleSubmit, formState: { errors } } = useForm<TFormInputs>()
   
-  const submit: SubmitHandler<TFormInputs> = data => api.post("/api/v1/ads", data, {
+  const submit: SubmitHandler<TFormInputs> = data => api.post("/api/v1/ads", { 'ad': data }, {
     withCredentials: true
   })
 
@@ -102,7 +102,7 @@ export function CreateAdButton() {
             <div className='flex flex-col gap-2'>
               <label htmlFor='discord_username' className='font-semibold'>Qual o seu discord?</label>
 
-              <input id='discord_username' className='px-4 py-3 h-[50px] rounded bg-zinc-900' type='text' placeholder='Usuário'{...register('discord_username', {
+              <input id='discord_username' className='px-4 py-3 h-[50px] rounded bg-zinc-900' type='text' placeholder='Usuário' {...register('discord_username', {
                 required: 'Usuário do discord é obrigatório'
               })} />
               

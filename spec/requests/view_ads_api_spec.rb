@@ -10,11 +10,15 @@ describe 'API visualização de anúncios' do
     end
 
     it 'retorna os anúncios cadastrados' do
-      ad1 = Ad.create!(game_mode: :unranked, platform: :battle_net, platform_indentification: 'PlayerNumberOne',
-                       years_playing: 7, favorite_classes: :tank, hour_start: 360, hour_end: 480,
+      unranked = GameMode.create!(name: 'unranked')
+      arcade = GameMode.create!(name: 'arcade')
+      user = User.create!(provider: 'discord', discord_id: '000000000000000000')
+
+      ad1 = Ad.create!(user:, game_mode: unranked, platform: :battle_net, platform_indentification: 'PlayerNumberOne',
+                       years_playing: 7, favorite_classes: :tank, hour_start: '18:00', hour_end: '19:00',
                        voice_channel: true)
-      ad2 = Ad.create!(game_mode: :arcade, platform: :steam, platform_indentification: 'Kiriko',
-                       years_playing: 1, favorite_classes: :support, hour_start: 360, hour_end: 480,
+      ad2 = Ad.create!(user:, game_mode: arcade, platform: :steam, platform_indentification: 'Kiriko',
+                       years_playing: 1, favorite_classes: :support, hour_start: '18:00', hour_end: '19:00',
                        voice_channel: true)
 
       get '/api/v1/ads'
@@ -28,8 +32,8 @@ describe 'API visualização de anúncios' do
       expect(res_body[0]['platform_indentification']).to eq 'PlayerNumberOne'
       expect(res_body[0]['years_playing']).to eq 7
       expect(res_body[0]['favorite_classes']).to eq 'tank'
-      expect(res_body[0]['hour_start']).to eq 360
-      expect(res_body[0]['hour_end']).to eq 480
+      expect(res_body[0]['hour_start']).to eq 1080
+      expect(res_body[0]['hour_end']).to eq 1140
       expect(res_body[0]['voice_channel']).to eq true
       expect(res_body[1]['id']).to eq ad2.id
       expect(res_body[1]['game_mode']).to eq 'arcade'
@@ -37,8 +41,8 @@ describe 'API visualização de anúncios' do
       expect(res_body[1]['platform_indentification']).to eq 'Kiriko'
       expect(res_body[1]['years_playing']).to eq 1
       expect(res_body[1]['favorite_classes']).to eq 'support'
-      expect(res_body[1]['hour_start']).to eq 360
-      expect(res_body[1]['hour_end']).to eq 480
+      expect(res_body[1]['hour_start']).to eq 1080
+      expect(res_body[1]['hour_end']).to eq 1140
       expect(res_body[1]['voice_channel']).to eq true
     end
   end
