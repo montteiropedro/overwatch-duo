@@ -13,7 +13,7 @@ type TFormInputs = {
   platform_indentification: string;
   platform: string;
   years_playing: number;
-  discord_username: string;
+  rank: string[];
   favorite_classes: string[];
   hour_start: number;
   hour_end: number;
@@ -56,17 +56,47 @@ export function CreateAdButton() {
 
           <div className='flex gap-6 mb-4'>
             <div className='w-full flex flex-col gap-2'>
+              <label htmlFor='rank' className='font-semibold'>Qual o seu rank?</label>
+
+              <select id='rank' className='px-4 py-3 w-full h-[50px] rounded bg-zinc-900' {...register('rank', { required: true })}>
+              <option value='unranked' className='font-mono cursor-overwatch'>Sem ranque</option>
+                <option value='bronze' className='font-mono cursor-overwatch'>Bronze</option>
+                <option value='silver' className='font-mono cursor-overwatch'>Prata</option>
+                <option value='gold' className='font-mono cursor-overwatch'>Ouro</option>
+                <option value='platinum' className='font-mono cursor-overwatch'>Platina</option>
+                <option value='diamond' className='font-mono cursor-overwatch'>Diamante</option>
+                <option value='master' className='font-mono cursor-overwatch'>Mestre</option>
+                <option value='grandmaster' className='font-mono cursor-overwatch'>Grão-mestre</option>
+              </select>
+              <span className='font-semibold text-sm text-red-400'>{errors.rank?.message}</span>
+            </div>
+
+            <div className='w-full flex flex-col gap-2'>
+              <label htmlFor='years_playing' className='font-semibold'>Joga há quantos anos?</label>
+
+              <input id='years_playing' className='px-4 py-3 w-full h-[50px] rounded bg-zinc-900' placeholder='Tudo bem ser ZERO' {...register('years_playing', {
+                pattern: { value: /^[0-9]+$/g, message: 'Precisa ser número' },
+                min: { value: 0, message: 'Tem que ser maios que 0' },
+                max: { value: new Date().getFullYear() - 2015, message: `Jogo lançado há ${new Date().getFullYear() - 2015} anos!`},
+              })} />
+              
+              <span className='font-semibold text-sm text-red-400'>{errors.years_playing?.message}</span>
+            </div>
+          </div>
+
+          <div className='flex gap-6 mb-4'>
+            <div className='w-full flex flex-col gap-2'>
               <label className='font-semibold'>Plataforma</label>
 
               <div className='w-full h-[50px] flex items-center gap-2'>
                 <input id='batlenet' type='radio' value='battle_net' className='hidden peer/batlenet' {...register('platform', { required: 'Plataforma é obrigatória' })} />
-                <label htmlFor='batlenet' className='py-3 w-full h-[50px] text-sm font-semibold flex justify-center items-center gap-2 bg-zinc-900 hover:bg-overwatch-default peer-checked/batlenet:bg-overwatch-default transition-all ease-in-out duration-500 rounded'>
+                <label htmlFor='batlenet' title='Battle.net' className='py-3 px-2 w-full h-[50px] text-sm font-semibold flex justify-center items-center gap-2 bg-zinc-900 hover:bg-overwatch-default peer-checked/batlenet:bg-overwatch-default transition-all ease-in-out duration-500 rounded'>
                   <FontAwesomeIcon icon={faBattleNet} className='h-7' />
                   Battle.net
                 </label>
                 
                 <input id='steam' type='radio' value='steam' className='hidden peer/steam' {...register('platform', { required: 'Plataforma é obrigatória' })} />
-                <label htmlFor='steam' className='py-3 w-full h-[50px] text-sm font-semibold flex justify-center items-center gap-2 bg-zinc-900 hover:bg-overwatch-default peer-checked/steam:bg-overwatch-default transition-all ease-in-out duration-500 rounded'>
+                <label htmlFor='steam' title='Steam' className='py-3 px-2 w-full h-[50px] text-sm font-semibold flex justify-center items-center gap-2 bg-zinc-900 hover:bg-overwatch-default peer-checked/steam:bg-overwatch-default transition-all ease-in-out duration-500 rounded'>
                   <FontAwesomeIcon icon={faSteam} className='h-7' />
                   Steam
                 </label>
@@ -75,38 +105,14 @@ export function CreateAdButton() {
               <span className='font-semibold text-sm text-red-400'>{errors.platform?.message}</span>
             </div>
 
-            <div className='flex flex-col gap-2'>
+            <div className='w-full flex flex-col gap-2'>
               <label htmlFor='platform_indentification' className='font-semibold'>Identificação na plataforma</label>
 
-              <input id='platform_indentification' className='px-4 py-3 h-[50px] rounded bg-zinc-900' type='text' placeholder='Como te chamam na plataforma?' {...register('platform_indentification', {
+              <input id='platform_indentification' className='w-full px-4 py-3 h-[50px] rounded bg-zinc-900' type='text' placeholder='Como te chamam na plataforma?' {...register('platform_indentification', {
                 required: 'Identificação na plataforma é obrigatória' 
               })} />
 
               <span className='font-semibold text-sm text-red-400'>{errors.platform_indentification?.message}</span>
-            </div>
-          </div>
-
-          <div className='flex gap-6 mb-4'>
-            <div className='flex flex-col gap-2'>
-              <label htmlFor='years_playing' className='font-semibold'>Joga há quantos anos?</label>
-
-              <input id='years_playing' className='px-4 py-3 h-[50px] rounded bg-zinc-900' placeholder='Tudo bem ser ZERO' {...register('years_playing', {
-                pattern: { value: /^[0-9]+$/g, message: 'Precisa ser número' },
-                min: { value: 0, message: 'Tem que ser maios que 0' },
-                max: { value: new Date().getFullYear() - 2015, message: `Jogo lançado há ${new Date().getFullYear() - 2015} anos!`},
-              })} />
-              
-              <span className='font-semibold text-sm text-red-400'>{errors.years_playing?.message}</span>
-            </div>
-
-            <div className='flex flex-col gap-2'>
-              <label htmlFor='discord_username' className='font-semibold'>Qual o seu discord?</label>
-
-              <input id='discord_username' className='px-4 py-3 h-[50px] rounded bg-zinc-900' type='text' placeholder='Usuário' {...register('discord_username', {
-                required: 'Usuário do discord é obrigatório'
-              })} />
-              
-              <span className='font-semibold text-sm text-red-400'>{errors.discord_username?.message}</span>
             </div>
           </div>
 

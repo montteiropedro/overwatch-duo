@@ -5,6 +5,7 @@ class User < ApplicationRecord
     where(provider: auth.provider, discord_id: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.discord_id = auth.uid
+      user.discord_user = auth.info.name
     end
   end
 end

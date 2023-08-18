@@ -4,7 +4,7 @@ describe 'API para criação de anúncios' do
   context 'POST /api/v1/ads' do
     it 'com sucesso' do
       GameMode.create!(name: 'unranked')
-      User.create!(provider: 'discord', discord_id: '000000000000000000')
+      User.create!(provider: 'discord', discord_id: '000000000000000000', discord_user: 'mydiscorduser')
       session = { discord: { 'id' => '000000000000000000' } }
       allow_any_instance_of(ApplicationController).to receive(:session).and_return(session)
 
@@ -27,7 +27,7 @@ describe 'API para criação de anúncios' do
 
     context 'sem sucesso' do
       it 'pois está faltando parâmetros' do
-        User.create!(provider: 'discord', discord_id: '000000000000000000')
+        User.create!(provider: 'discord', discord_id: '000000000000000000', discord_user: 'mydiscorduser')
         session = { discord: { 'id' => '000000000000000000' } }
         allow_any_instance_of(ApplicationController).to receive(:session).and_return(session)
 
@@ -42,7 +42,7 @@ describe 'API para criação de anúncios' do
       end
 
       it 'pois os parâmetro enviados são inválidos' do
-        User.create!(provider: 'discord', discord_id: '000000000000000000')
+        User.create!(provider: 'discord', discord_id: '000000000000000000', discord_user: 'mydiscorduser')
         session = { discord: { 'id' => '000000000000000000' } }
         allow_any_instance_of(ApplicationController).to receive(:session).and_return(session)
 
@@ -57,7 +57,7 @@ describe 'API para criação de anúncios' do
 
       it 'pois ocorreu um erro interno ao salvar os dados' do
         allow(Ad).to receive(:new).and_raise(ActiveRecord::ActiveRecordError)
-        User.create!(provider: 'discord', discord_id: '000000000000000000')
+        User.create!(provider: 'discord', discord_id: '000000000000000000', discord_user: 'mydiscorduser')
         session = { discord: { 'id' => '000000000000000000' } }
         allow_any_instance_of(ApplicationController).to receive(:session).and_return(session)
 

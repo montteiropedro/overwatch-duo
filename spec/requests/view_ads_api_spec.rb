@@ -12,7 +12,7 @@ describe 'API visualização de anúncios' do
     it 'retorna os anúncios cadastrados' do
       unranked = GameMode.create!(name: 'unranked')
       arcade = GameMode.create!(name: 'arcade')
-      user = User.create!(provider: 'discord', discord_id: '000000000000000000')
+      user = User.create!(provider: 'discord', discord_id: '000000000000000000', discord_user: 'mydiscorduser')
 
       ad1 = Ad.create!(user:, game_mode: unranked, platform: :battle_net, platform_indentification: 'PlayerNumberOne',
                        years_playing: 7, favorite_classes: :tank, hour_start: '18:00', hour_end: '19:00',

@@ -3,6 +3,7 @@ class Ad < ApplicationRecord
   belongs_to :user
 
   enum platform: { battle_net: 1, steam: 2 }
+  enum user_rank: { unranked: 1, bronze: 2, silver: 3, gold: 4, platinum: 5, diamond: 6, master: 7, grandmaster: 8 }
   enum favorite_classes: { damage: 1, tank: 2, support: 3 }
 
   validates :platform, :platform_indentification, presence: true

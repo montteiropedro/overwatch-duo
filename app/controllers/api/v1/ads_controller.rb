@@ -25,15 +25,15 @@ class Api::V1::AdsController < Api::V1::ApiController
 
   def ad_params
     params.require(:ad).permit(:platform, :platform_indentification, :years_playing, :favorite_classes,
-                               :hour_start, :hour_end, :voice_channel)
+                               :user_rank, :hour_start, :hour_end, :voice_channel)
   end
 
   def format(res)
     {
       id: res.id, platform: res.platform, platform_indentification: res.platform_indentification,
       years_playing: res.years_playing, favorite_classes: res.favorite_classes,
-      hour_start: res.hour_start, hour_end: res.hour_end, voice_channel: res.voice_channel,
-      game_mode: res.game_mode.name
+      user_rank: res.user_rank, hour_start: res.hour_start, hour_end: res.hour_end,
+      voice_channel: res.voice_channel, game_mode: res.game_mode.name
     }
   end
 end

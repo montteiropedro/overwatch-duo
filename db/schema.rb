@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_15_184320) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_18_144903) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_184320) do
     t.datetime "updated_at", null: false
     t.uuid "game_mode_id", null: false
     t.uuid "user_id", null: false
+    t.integer "user_rank"
     t.index ["game_mode_id"], name: "index_ads_on_game_mode_id"
     t.index ["user_id"], name: "index_ads_on_user_id"
   end
@@ -42,7 +43,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_184320) do
     t.string "discord_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "discord_user", null: false
     t.index ["discord_id"], name: "index_users_on_discord_id", unique: true
+    t.index ["discord_user"], name: "index_users_on_discord_user", unique: true
   end
 
   add_foreign_key "ads", "game_modes"
