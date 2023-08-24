@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     User.from_omniauth(request.env['omniauth.auth'])
     create_session(request.env['omniauth.auth'])
 
-    redirect_to ENV.fetch('WEB_URL')
+    redirect_to ENV.fetch('WEB_URL'), allow_other_host: true
   end
 
   def destroy

@@ -16,12 +16,12 @@ class ApplicationController < ActionController::API
     render status: :not_found
   end
 
-  def bad_request(err)
-    err_message = err.message.gsub(/('.*')/, '').split
-    messages = {}
-    messages[err_message.pop] = t(".#{err_message.join('_')}")
-    render status: :bad_request, json: { error: t('.bad_request'), messages: }
-  end
+  # def bad_request(err)
+  #   err_message = err.message.gsub(/('.*')/, '').split
+  #   messages = {}
+  #   messages[err_message.pop] = t(".#{err_message.join('_')}")
+  #   render status: :bad_request, json: { error: t('.bad_request'), messages: }
+  # end
 
   def invalid(err)
     render status: :unprocessable_entity, json: { errors: err.record.errors }

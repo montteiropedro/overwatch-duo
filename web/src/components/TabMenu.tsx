@@ -51,6 +51,7 @@ export function TabMenu() {
         ) : (
           <button
             onClick={login}
+            id = 'discordLogin'
             className='cursor-pointer px-4 py-3 flex items-center gap-3 font-medium bg-overwatch-default hover:bg-overwatch-hover transition-all ease-in-out duration-500 rounded-md'
           >
             <FontAwesomeIcon icon={faDiscord} className='h-[22px]'/>

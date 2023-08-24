@@ -1,0 +1,11 @@
+{
+  "provider": "discord",
+  "uid": "000000000000000000",
+  "info": {
+    "image": "image",
+    "name": "mydiscorduser"
+  },
+  "credentials": {
+    "expires_at": 1693511
+  }
+}

@@ -12,7 +12,7 @@ interface IGameMode {
 
 export default function Home() {
   const [gameModes, setGameModes] = useState<IGameMode[] | null>(null)
-  
+
   useEffect(() => {
     api.get('/api/v1/game_modes').then(({ data }) => {
       setGameModes(data)
